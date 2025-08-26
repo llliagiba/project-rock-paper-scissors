@@ -11,17 +11,13 @@ VERY FLAWED, I AM AWARE
 */
 
 function getHumanPick() {
-    const humanPick = prompt("What's it gonna be?");
-    console.log(humanPick);
+    let humanPick = prompt("WHAT'S IT GOING TUH BE?");
+    humanPick = humanPick.toLowerCase();
+    return humanPick;
 }
 
 function getComputerPick() {
     const randomNumber = Math.random();
-    // Math.random = [0, 1)
-    // if randomNumber === [0, 1/3) computerPick = 'rock'
-    // if randomNumber === [1/3, 2/3) compuerPick = 'paper'
-    // if randomNumber === [2/3, 1) computerPick = 'scissors'
-    // but JavaScript does not support chained comparison operators, so use boolean operators intead, or a single comparison statement
     let computerPick; 
     if (randomNumber < 1/3) {
         computerPick = 'rock';
@@ -30,9 +26,43 @@ function getComputerPick() {
     } else {
         computerPick = 'scissors';
     }
-    console.log(randomNumber);
-    console.log(computerPick);
+    return computerPick;
 }
 
-getComputerPick();          
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanPick, computerPick) {
+    if (humanPick === 'rock' && computerPick === 'rock') {
+        console.log('Tie!')
+    } else if (humanPick === 'rock' && computerPick === 'paper') {
+        console.log('You lose! Paper beats Rock.');
+        computerScore += 1;
+    } else if (humanPick === 'rock' && computerPick === 'scissors') {
+        console.log('You win! Rock beats Scissors.');
+        humanScore += 1;
+    } else if (humanPick === 'paper' && computerPick === 'rock') {
+        console.log('You win! Paper beats Rock.');
+        humanScore += 1;
+    } else if (humanPick === 'paper' && computerPick === 'paper') {
+        console.log('Tie!');
+    } else if (humanPick === 'paper' && computerPick === 'scissors') {
+        console.log('You lose! Scissors beat Paper.')
+        computerScore += 1;
+    } else if (humanPick === 'scissors' && computerPick === 'rock') {
+        console.log('You lose! Rock beats Scissors.');
+        computerScore += 1;
+    } else if (humanPick === 'scissors' && computerPick === 'paper') {
+        console.log('You win! Scissors beat Paper.');
+        humanScore += 1;
+    } else if (humanPick === 'scissors' && computerPick === 'scissors') {
+        console.log('Tie!');
+    }
+}
+
+const humanPick = getHumanPick();
+const computerPick = getComputerPick();
+
+playRound(humanPick, computerPick);
+
 
