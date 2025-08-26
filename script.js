@@ -60,9 +60,25 @@ function playRound(humanPick, computerPick) {
     }
 }
 
-const humanPick = getHumanPick();
-const computerPick = getComputerPick();
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanPick = getHumanPick();
+        const computerPick = getComputerPick();
+        playRound(humanPick, computerPick);
+    }
+    console.log('Human Score Total: ' + humanScore);
+    console.log('Computer Score Total: ' + computerScore);
 
-playRound(humanPick, computerPick);
+    if (humanScore > computerScore) {
+        console.log('Final winner: HUMAN');
+    } else if (humanScore === computerScore) {
+        console.log('TIS A TIE.')
+    } else {
+        console.log('Final winner: COMPUTER');
+    }
+}
+
+playGame();
+
 
 
