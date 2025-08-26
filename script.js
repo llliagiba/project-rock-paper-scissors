@@ -15,3 +15,24 @@ function getHumanPick() {
     console.log(humanPick);
 }
 
+function getComputerPick() {
+    const randomNumber = Math.random();
+    // Math.random = [0, 1)
+    // if randomNumber === [0, 1/3) computerPick = 'rock'
+    // if randomNumber === [1/3, 2/3) compuerPick = 'paper'
+    // if randomNumber === [2/3, 1) computerPick = 'scissors'
+    // but JavaScript does not support chained comparison operators, so use boolean operators intead, or a single comparison statement
+    let computerPick; 
+    if (randomNumber < 1/3) {
+        computerPick = 'rock';
+    } else if (randomNumber < 2/3) {
+        computerPick = 'paper';
+    } else {
+        computerPick = 'scissors';
+    }
+    console.log(randomNumber);
+    console.log(computerPick);
+}
+
+getComputerPick();          
+
